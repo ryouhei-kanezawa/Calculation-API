@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\CalculationSquared;
+use App\Http\Controllers\CalculationFormula;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,10 +15,11 @@ use App\Http\Controllers\CalculationSquared;
 |
 */
 
-Route::middleware(['middleware' => 'api'])->group(function (Request $request) {
-    Route::get('/squared',[CalculationSquared::class,'index']);
+Route::middleware(['middleware' => 'api'])->group(function () {
+    Route::get('/squared',[CalculationFormula::class,'squared']);
+    Route::get('/cube',[CalculationFormula::class,'cube']);
+    Route::get('/area_circle',[CalculationFormula::class,'area_circle']);
 });
-
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
